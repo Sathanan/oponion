@@ -1,168 +1,224 @@
-.page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
-  font-family: var(--font-geist-sans);
-}
-
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
-}
-
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
-}
-
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
-}
-
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.ctas {
-  display: flex;
-  gap: 16px;
-}
-
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
-  border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
+.container {
+  min-height: 100vh;
+  background-color: #000;
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
 }
 
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 158px;
-}
-
-.footer {
-  grid-row-start: 3;
+.main {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
   display: flex;
-  gap: 24px;
-}
-
-.footer a {
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 1;
 }
 
-.footer img {
-  flex-shrink: 0;
+.title {
+  font-family: "AgencyFB", sans-serif;
+  font-weight: 500;
+  color: #ffff;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
+.spotlight {
+  position: absolute;
+  top: -100px;
+  left: 300px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  border-radius: 50%;
+  filter: blur(20px);
+  z-index: 0;
+  animation: moveLight 10s infinite alternate;
+}
 
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+@keyframes moveLight {
+  0% {
+    transform: translate(0, 0);
   }
-
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+  100% {
+    transform: translate(50px, 50px);
   }
 }
 
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  }
+.content {
+  text-align: center;
+  color: white;
+  max-width: 600px;
+  margin: 0 auto;
+}
 
-  .main {
-    align-items: center;
-  }
+.logo {
+  margin-bottom: 3rem;
+}
 
-  .main ol {
-    text-align: center;
-  }
+.logoImage {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(
+    135deg,
+    #8bc34a,
+    #4caf50,
+    #009688,
+    #00bcd4,
+    #3f51b5,
+    #673ab7,
+    #9c27b0,
+    #e91e63,
+    #f44336,
+    #ff9800,
+    #cddc39
+  );
+  clip-path: path(
+    "M90,0 C140,0 180,40 180,90 C180,140 140,180 90,180 C40,180 0,140 0,90 C0,40 40,0 90,0 Z"
+  );
+  position: relative;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
 
-  .ctas {
+.logoImage::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  background-color: black;
+  clip-path: path(
+    "M90,10 C135,10 170,45 170,90 C170,135 135,170 90,170 C45,170 10,135 10,90 C10,45 45,10 90,10 Z"
+  );
+  z-index: 1;
+}
+
+.logoImage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0px,
+    transparent 8px,
+    rgba(255, 255, 255, 0.8) 9px,
+    rgba(255, 255, 255, 0.8) 10px
+  );
+  clip-path: path(
+    "M90,0 C140,0 180,40 180,90 C180,140 140,180 90,180 C40,180 0,140 0,90 C0,40 40,0 90,0 Z"
+  );
+  z-index: 2;
+}
+
+.logo h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.newsletter {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  margin-bottom: 2rem;
+}
+
+.newsletter h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.formGroup {
+  display: flex;
+  margin-top: 1.5rem;
+}
+
+.formGroup input {
+  flex: 1;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  outline: none;
+}
+
+.formGroup input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.formGroup button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  background: linear-gradient(90deg, #9c27b0, #e91e63);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.formGroup button:hover {
+  background: linear-gradient(90deg, #8e24aa, #d81b60);
+}
+
+.success {
+  color: #4caf50;
+  margin-top: 1rem;
+}
+
+.social {
+  display: none;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.socialIcon {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: white;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+  stroke: #e91e63;
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .formGroup {
     flex-direction: column;
   }
 
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
+  .formGroup input {
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
   }
 
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+  .formGroup button {
+    border-radius: 4px;
   }
 }

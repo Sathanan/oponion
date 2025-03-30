@@ -1,95 +1,104 @@
+"use client"; // Add this line at the top of the page.js
+
 import Image from "next/image";
+import Head from "next/head";
+import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setEmail("oponion.survey@gmail.com");
+    setTimeout(() => setSubmitted(false), 3000);
+  };
+
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>OPONION - Coming Soon</title>
+        <meta name="description" content="OPONION - No more survey tears" />
+        <meta name="description" content="OPONION - No more survey tears" />
+        <meta name="robots" content="index, follow" />
+        {" oponion"}
+        <meta property="og:title" content="OPONION - Coming Soon" />
+        <meta
+          property="og:description"
+          content="OPONION - No more survey tears"
+        />
+        <meta property="og:image" content="/logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="OPONION - Coming Soon" />
+        <meta
+          name="twitter:description"
+          content="OPONION - No more survey tears"
+        />
+        <meta name="twitter:image" content="/logo.png" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main className={styles.main}>
+        <div className={styles.spotlight}></div>
+
+        <div className={styles.content}>
+          <div className={styles.logo}>
             <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/logo.png"
+              alt="OPONION Logo"
+              width={160}
+              height={180}
             />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+            <h1 className={styles.title}>OPONION</h1>
+            <p className={styles.tagline}>No more survey tears</p>
+          </div>
+
+          <div className={styles.newsletter}>
+            <h2>Coming soon!</h2>
+            <p>For more information you can contact us.</p>
+
+            <form onSubmit={handleSubmit}>
+              <div className={styles.formGroup}>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your E-mail address"
+                  required
+                />
+                <button type="submit">Submit</button>
+              </div>
+              {submitted && (
+                <p className={styles.success}>Thank you for your interesst!</p>
+              )}
+            </form>
+          </div>
+
+          <div className={styles.social}>
+            <a href="#" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" className={styles.socialIcon}>
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" className={styles.socialIcon}>
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" className={styles.socialIcon}>
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
         </div>
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
