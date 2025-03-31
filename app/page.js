@@ -39,6 +39,10 @@ useEffect(() => {
     setSubmitted(true);
     setEmail("oponion.survey@gmail.com");
     setTimeout(() => setSubmitted(false), 3000);
+    setTimeout(() => {
+      setSubmitted(false);
+      setAnimationActive(false);
+    }, 4000);
   };
 
   return (
@@ -83,7 +87,7 @@ useEffect(() => {
 
           <div className={styles.newsletter}>
             <h2>Coming soon!</h2>
-            <p>For more information you can contact us.</p>
+            <p>For more information, subscribe to our newsletter.</p>
 
             <form onSubmit={handleSubmit}>
               <div className={styles.formGroup}>
@@ -94,10 +98,18 @@ useEffect(() => {
                   placeholder="Your E-mail address"
                   required
                 />
-                <button type="submit">Submit</button>
+                <button type="submit">Subscribe</button>
               </div>
               {submitted && (
-                <p className={styles.success}>Thank you for your interesst!</p>
+                <div className={styles.successAnimation}>
+                  <div className={styles.checkmarkContainer}>
+                    <svg className={styles.checkmark} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                      <circle className={styles.checkmarkCircle} cx="26" cy="26" r="25" fill="none" />
+                      <path className={styles.checkmarkCheck} fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                    </svg>
+                  </div>
+                  <p className={styles.successMessage}>Thank you for your interest!</p>
+                </div>
               )}
             </form>
           </div>
