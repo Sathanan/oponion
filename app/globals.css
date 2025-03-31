@@ -1,4 +1,5 @@
 @import url(https://db.onlinewebfonts.com/c/7a9ddc1b445c1713f7ad1cf3de47edd7?family=Agency+FB); 
+@import url(https://db.onlinewebfonts.com/c/356e1c3e737c1bf31dea2ce604eec3ab?family=Agency+FB+Bold); 
 @font-face {
   font-family: "AgencyFB";
   src: url("/fonts/AGENCYB.ttf") format("truetype");
@@ -14,6 +15,16 @@
   url("https://db.onlinewebfonts.com/t/7a9ddc1b445c1713f7ad1cf3de47edd7.woff")format("woff"),
   url("https://db.onlinewebfonts.com/t/7a9ddc1b445c1713f7ad1cf3de47edd7.ttf")format("truetype"),
   url("https://db.onlinewebfonts.com/t/7a9ddc1b445c1713f7ad1cf3de47edd7.svg#Agency FB")format("svg");
+}
+
+@font-face {
+  font-family: "Agency FB Bold";
+  src: url("https://db.onlinewebfonts.com/t/356e1c3e737c1bf31dea2ce604eec3ab.eot");
+  src: url("https://db.onlinewebfonts.com/t/356e1c3e737c1bf31dea2ce604eec3ab.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/356e1c3e737c1bf31dea2ce604eec3ab.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/356e1c3e737c1bf31dea2ce604eec3ab.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/356e1c3e737c1bf31dea2ce604eec3ab.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/356e1c3e737c1bf31dea2ce604eec3ab.svg#Agency FB Bold")format("svg");
 }
 
 html,
