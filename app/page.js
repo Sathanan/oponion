@@ -9,20 +9,30 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const blob = document.querySelector(`.${styles.gradientCursor}`);
-      if (blob) {
-        blob.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
+useEffect(() => {
+  const handleMouseMove = (e) => {
+    const blob = document.querySelector(`.${styles.gradientCursor}`);
+    if (blob) {
+      blob.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
+    }
+    
+    const buttons = document.querySelectorAll('button, a');
+    buttons.forEach(button => {
+      button.addEventListener('mouseenter', () => {
+        blob.style.width = '450px';
+        blob.style.height = '450px';
+      });
+      
+      button.addEventListener('mouseleave', () => {
+        blob.style.width = '650px';
+        blob.style.height = '650px';
+      });
+    });
+  };
+  
+  window.addEventListener("mousemove", handleMouseMove);
+  return () => window.removeEventListener("mousemove", handleMouseMove);
+}, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
