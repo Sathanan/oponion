@@ -9,6 +9,21 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const blob = document.querySelector(`.${styles.gradientCursor}`);
+      if (blob) {
+        blob.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
@@ -18,6 +33,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <div className={styles.gradientCursor}></div>
       <Head>
         <title>OPONION - Coming Soon</title>
         <meta name="description" content="OPONION - No more survey tears" />
